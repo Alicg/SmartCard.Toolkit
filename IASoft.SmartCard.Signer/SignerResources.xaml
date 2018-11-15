@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:signer="clr-namespace:IASoft.SmartCard.Signer">
+    <DataTemplate DataType="{x:Type signer:SignerViewModel}">
+        <signer:SignerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type signer:SmartCardStatusViewModel}">
+        <signer:SmartCardStatusView/>
+    </DataTemplate>
+</ResourceDictionary>

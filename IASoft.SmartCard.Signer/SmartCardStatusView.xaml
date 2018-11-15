@@ -1,0 +1,32 @@
+<UserControl x:Class="IASoft.SmartCard.Signer.SmartCardStatusView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:signer="clr-namespace:IASoft.SmartCard.Signer"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:wpfCommons="clr-namespace:IASoft.WPFCommons;assembly=IASoft.WPFCommons"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance signer:SmartCardStatusViewModel}"
+         HorizontalAlignment="Right">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <wpfCommons:SharedResourceDictionary Source="/IASoft.SmartCard.Commons;component/CommonResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <materialDesign:Badged BadgePlacementMode="BottomRight" BadgeBackground="Transparent" ToolTip="{Binding SmartCardConnectionDescription}">
+        <materialDesign:PackIcon Kind="UserCardDetails" Width="30" Height="30" Foreground="LightPink"/>
+        <materialDesign:Badged.Badge>
+            <Grid>
+                <materialDesign:PackIcon Kind="Close" Width="15" Height="15" Foreground="Red" ToolTip="Smartcard is disconnected"
+                                         Visibility="{Binding SmartCardDisconnected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <materialDesign:PackIcon Kind="Check" Width="15" Height="15" Foreground="Green" ToolTip="Smartcard is connected" 
+                                         Visibility="{Binding SmartCardDisconnected, Converter={StaticResource InverseBoolToVisConverter}}"/>
+                <ProgressBar Width="15" Height="15" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" 
+                             Visibility="{Binding StatusRefreshing, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+        </materialDesign:Badged.Badge>
+    </materialDesign:Badged>
+</UserControl>

@@ -1,0 +1,44 @@
+<UserControl x:Class="IASoft.SmartCard.Signer.SignerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:signer="clr-namespace:IASoft.SmartCard.Signer"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:wpfCommons="clr-namespace:IASoft.WPFCommons;assembly=IASoft.WPFCommons"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance signer:SignerViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <wpfCommons:SharedResourceDictionary Source="/IASoft.SmartCard.Commons;component/CommonResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button Focusable="False"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                Command="{Binding ChoosePdfToSignCommand}"
+                materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding Signing}"
+                materialDesign:ButtonProgressAssist.Value="-1"
+                materialDesign:ButtonProgressAssist.IsIndeterminate="True">
+            <Button.Content>
+                <materialDesign:PackIcon Kind="FilePdf" Width="30" Height="30" Foreground="Red"/>
+            </Button.Content>
+        </Button>
+        <TextBlock Text="{Binding LastStatusDescription}" TextWrapping="Wrap" HorizontalAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MaterialDesignCaptionTextBlock}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding LastDocumentSigned}" Value="True">
+                            <Setter Property="TextBlock.Foreground" Value="Green"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding LastDocumentSigned}" Value="False">
+                            <Setter Property="TextBlock.Foreground" Value="Red"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </StackPanel>
+</UserControl>
