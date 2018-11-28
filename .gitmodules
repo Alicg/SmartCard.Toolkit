@@ -1,0 +1,3 @@
+[submodule "external/IASoft.Commons"]
+	path = external/IASoft.Commons
+	url = git@github.com:Alicg/IASoft.Commons.git
