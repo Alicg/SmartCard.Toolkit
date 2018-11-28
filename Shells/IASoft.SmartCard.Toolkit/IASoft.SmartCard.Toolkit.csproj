@@ -202,7 +202,4 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)external\nuget.exe restore $(SolutionDir)external\IASoft.Commons</PreBuildEvent>
-  </PropertyGroup>
 </Project>

@@ -81,11 +81,18 @@
       <Project>{b5a75b4f-a680-480b-84de-cc27f418db59}</Project>
       <Name>IASoft.WPFCommons</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IASoft.SmartCard.BuildProject\IASoft.SmartCard.BuildProject.csproj">
+      <Project>{61f7e70e-bdec-45e7-b1fe-eb11a0681b1c}</Project>
+      <Name>IASoft.SmartCard.BuildProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)external\nuget.exe restore $(SolutionDir)external\IASoft.Commons</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
