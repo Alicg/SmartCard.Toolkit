@@ -73,11 +73,11 @@
     <Page Include="CommonResources.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CommonLibs\WPF\IASoft.MaterialDesignCommons\IASoft.MaterialDesignCommons.csproj">
+    <ProjectReference Include="..\external\IASoft.Commons\WPF\IASoft.MaterialDesignCommons\IASoft.MaterialDesignCommons.csproj">
       <Project>{1ce56874-b82a-4958-963e-df424dc88701}</Project>
       <Name>IASoft.MaterialDesignCommons</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CommonLibs\WPF\IASoft.WPFCommons\IASoft.WPFCommons.csproj">
+    <ProjectReference Include="..\external\IASoft.Commons\WPF\IASoft.WPFCommons\IASoft.WPFCommons.csproj">
       <Project>{b5a75b4f-a680-480b-84de-cc27f418db59}</Project>
       <Name>IASoft.WPFCommons</Name>
     </ProjectReference>

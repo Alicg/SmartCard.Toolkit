@@ -1,0 +1,1 @@
+external\nuget.exe restore external\IASoft.Commons

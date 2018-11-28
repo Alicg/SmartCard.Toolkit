@@ -164,15 +164,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CommonLibs\Utils\Utils.csproj">
+    <ProjectReference Include="..\external\IASoft.Commons\Utils\Utils.csproj">
       <Project>{34b54e00-df35-4414-8e6f-59a24c895925}</Project>
       <Name>Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CommonLibs\WPF\IASoft.PrismCommons\IASoft.PrismCommons.csproj">
+    <ProjectReference Include="..\external\IASoft.Commons\WPF\IASoft.PrismCommons\IASoft.PrismCommons.csproj">
       <Project>{fe8df3ce-ed49-44d5-8fa7-836a30133a67}</Project>
       <Name>IASoft.PrismCommons</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CommonLibs\WPF\IASoft.WPFCommons\IASoft.WPFCommons.csproj">
+    <ProjectReference Include="..\external\IASoft.Commons\WPF\IASoft.WPFCommons\IASoft.WPFCommons.csproj">
       <Project>{b5a75b4f-a680-480b-84de-cc27f418db59}</Project>
       <Name>IASoft.WPFCommons</Name>
     </ProjectReference>
