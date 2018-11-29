@@ -1,4 +1,4 @@
-﻿<Application x:Class="SmartCard.Admin.WpfShell.App"
+﻿<Application x:Class="IASoft.SmartCard.Toolkit.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:wpfCommons="clr-namespace:IASoft.WPFCommons;assembly=IASoft.WPFCommons">

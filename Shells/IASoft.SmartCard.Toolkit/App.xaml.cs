@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SmartCard.Admin.WpfShell
+namespace IASoft.SmartCard.Toolkit
 {
     /// <summary>
     /// Interaction logic for App.xaml

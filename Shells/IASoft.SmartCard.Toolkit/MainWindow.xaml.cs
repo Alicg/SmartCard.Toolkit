@@ -1,4 +1,4 @@
-﻿namespace SmartCard.Admin.WpfShell
+﻿namespace IASoft.SmartCard.Toolkit
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -7,7 +7,7 @@
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

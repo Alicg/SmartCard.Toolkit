@@ -15,13 +15,12 @@ using IASoft.WPFCommons.Events;
 using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
-using SVA;
 using Unity;
 using Unity.Interception.ContainerIntegration;
 using Unity.Lifetime;
 using UnityUtils;
 
-namespace SmartCard.Admin.WpfShell
+namespace IASoft.SmartCard.Toolkit
 {
     public class Bootstrapper : UnityBootstrapper
     {

@@ -1,15 +1,14 @@
-﻿namespace SVA
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using System.Windows;
+using Utils.Extensions;
+
+namespace IASoft.SmartCard.Toolkit
 {
-    using System;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-    using System.Threading;
-    using System.Windows;
-
-    using Utils.Extensions;
-
     internal class ProgramRuntime
     {
         public static readonly DirectoryInfo ProgramDirectory = new DirectoryInfo(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName));
