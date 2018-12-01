@@ -13,6 +13,7 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
     public static class SmartCardUtils
     {
         private const int TimesToTryFindSlot = 5;
+        private const int MillisecondsToWaitBetweenFindSlotsAttempts = 500;
         
         public static Slot SaferFindSlot(string pkcsLibPath, string signingTokenLabel)
         {
@@ -25,7 +26,7 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
                 }
                 catch
                 {
-                    Task.Delay(200);
+                    Task.Delay(MillisecondsToWaitBetweenFindSlotsAttempts);
                     // ignored
                 }
             }
@@ -99,7 +100,7 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
                 }
                 catch
                 {
-                    Task.Delay(200);
+                    Task.Delay(MillisecondsToWaitBetweenFindSlotsAttempts);
                     // ignored
                 }
             }
@@ -117,7 +118,7 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
                 }
                 catch
                 {
-                    Task.Delay(200);
+                    Task.Delay(MillisecondsToWaitBetweenFindSlotsAttempts);
                     // ignored
                 }
             }
