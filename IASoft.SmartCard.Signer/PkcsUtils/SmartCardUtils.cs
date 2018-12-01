@@ -12,9 +12,10 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
 {
     public static class SmartCardUtils
     {
+        private const int TimesToTryFindSlot = 5;
+        
         public static Slot SaferFindSlot(string pkcsLibPath, string signingTokenLabel)
         {
-            const int TimesToTryFindSlot = 3;
             // sometimes GetTokenInfo can return native exception, try again usually works fine.
             for (var i = 0; i < TimesToTryFindSlot; i++)
             {
@@ -58,13 +59,9 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
         {
             using(var chain = new X509Chain())
             {
-                if (chain.Build(certificate))
-                {
-                    return chain.ChainElements.Cast<X509ChainElement>().Select(v => v.Certificate).ToArray();
-                }
+                chain.Build(certificate);
+                return chain.ChainElements.Cast<X509ChainElement>().Select(v => v.Certificate).ToArray();
             }
-
-            return new X509Certificate2[0];
         }
 
         public static string FindSigningCertificateId(PkcsSession session, string certificateLabel)
@@ -94,7 +91,7 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
 
         public static Pkcs11RsaSignature SaferCreateSignature(string pkcsLibPath, string tokenLabel, string tokenPin, string signingCertificateId)
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < TimesToTryFindSlot; i++)
             {
                 try
                 {
@@ -112,7 +109,7 @@ namespace IASoft.SmartCard.Signer.PkcsUtils
 
         public static byte[] SaferGetSigningCertificate(this Pkcs11RsaSignature signature)
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < TimesToTryFindSlot; i++)
             {
                 try
                 {

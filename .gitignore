@@ -4,3 +4,6 @@ packages
 obj/
 bin/
 /*.DotSettings
+/external/ReleaseBinaries
+/Publish
+/artifacts
