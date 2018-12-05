@@ -1,6 +1,9 @@
+using System;
 using System.Configuration;
 using System.IO;
+using System.Windows;
 using IASoft.SmartCard.Signer.PkcsUtils;
+using Utils.Extensions;
 
 namespace IASoft.SmartCard.Signer
 {
@@ -32,11 +35,20 @@ namespace IASoft.SmartCard.Signer
                 return pkcsLibPathInConfig;
             }
 
-            var foundPkcsLibPath = this.eacPkcsLibSearcher.FindPcksLib();
-            ConfigurationManager.AppSettings[PkcsLibPathConfigName] = foundPkcsLibPath;
-            ConfigurationManager.RefreshSection("appSetting");
+            try
+            {
+                var foundPkcsLibPath = this.eacPkcsLibSearcher.FindPcksLib();
+                ConfigurationManager.AppSettings[PkcsLibPathConfigName] = foundPkcsLibPath;
+                ConfigurationManager.RefreshSection("appSetting");
 
-            return foundPkcsLibPath;
+                return foundPkcsLibPath;
+            }
+            catch (InvalidOperationException e)
+            {
+                MessageBox.Show("No PKCS11 lib was found. Please install PCKS11 provider and launch this tool again\r\n\r\n" + e.GetFullMessage(), "No PKCS11 lib was found", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(0);
+                throw;
+            }
         }
     }
 }

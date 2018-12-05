@@ -1,8 +1,9 @@
 using System;
-using System.CodeDom;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using IASoft.PrismCommons;
 using IASoft.SmartCard.Signer.PkcsUtils;
+using IASoft.WPFCommons.Background;
 using IASoft.WPFCommons.Events;
 
 namespace IASoft.SmartCard.Signer
@@ -15,11 +16,14 @@ namespace IASoft.SmartCard.Signer
         private bool statusRefreshing;
         private string smartCardConnectionDescription;
 
-        public SmartCardStatusViewModel(IConfigurationService configurationService, IReactiveEventAggregator eventAggregator) : base(eventAggregator)
+        public SmartCardStatusViewModel(
+            IConfigurationService configurationService,
+            IReactiveEventAggregator eventAggregator) : base(eventAggregator)
         {
             this.configurationService = configurationService;
-            
-            Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(RefreshStatusIntervalInSeconds)).ObserveOnDispatcher().Synchronize().Subscribe(v => this.RefreshStatus());
+
+            Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(RefreshStatusIntervalInSeconds), DispatcherScheduler.Current)
+                .Subscribe(v => this.RefreshStatus());
         }
 
         public string SmartCardConnectionDescription
